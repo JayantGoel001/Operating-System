@@ -5,10 +5,10 @@ void forkexample()
 {
     pid_t pid = fork();
     if (pid == 0){
-        printf("Hello from Child!\n");
+        printf("Hello from Child! : %d \n ",pid);
     }
     else {
-        printf("Hello from Parent!\n");
+        printf("Hello from Parent! : %d \n",pid);
     }
 }
 int main()
