@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <signal.h>
 
-void sigint(int signo){
-    printf("CHILD: I have received a SIGINT%d\n",signo);
+void sigint(int sigint){
+    printf("CHILD: I have received a SIGINT%d\n", sigint);
 }
 int main(int argc,char **argv){
-    int pid;
-    if ((pid = fork()) < 0) {
+    int pid = fork();
+    if ( pid< 0) {
         perror("fork");
         exit(1);
     }
