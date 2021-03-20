@@ -41,14 +41,14 @@ void findAvgTime(int *processes, int n, int *bt)
 int main()
 {
     int n = 0;
-    scanf("%d",n);
+    scanf("%d",&n);
     int processes[n];
     for (int i = 0; i < n; ++i) {
-        scanf("%d",processes[i]);
+        scanf("%d",&processes[i]);
     }
     int burst_time[n];
     for (int i = 0; i < n; ++i) {
-        scanf("%d",burst_time[i]);
+        scanf("%d",&burst_time[i]);
     }
 
     findAvgTime(processes, n, burst_time);
