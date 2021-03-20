@@ -12,6 +12,6 @@ int main(int argc, char *argv[]){
         exit(1);
     }
 
-    printf("sum ----->%d\n",atoi(argv[1])+atoi(argv[2]));
+    printf("Result is %d\n",atoi(argv[1])*atoi(argv[2]));
     return 0;
 }
