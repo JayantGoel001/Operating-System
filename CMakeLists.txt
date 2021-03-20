@@ -3,4 +3,4 @@ project(Operating_System C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(. "Week 1/1.c")
+add_executable(. "Week 1/2.cpp")
