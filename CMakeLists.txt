@@ -3,4 +3,4 @@ project(Operating_System C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(. "Week 3/Synchronization-2/4.c")
+add_executable(. "Week 3/Threads/6.c")
