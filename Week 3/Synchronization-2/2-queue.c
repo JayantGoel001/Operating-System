@@ -5,7 +5,7 @@
 
 void check_error(int code, char *generator);
 
-#include "queue.h"
+#include "2-queue.h"
 
 /* global queue */
 struct queue_struct thr_queue;

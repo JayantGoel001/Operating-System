@@ -1,24 +1,16 @@
-/* example structure for the Boss-Worker parallel programming model
- * see Thread Time: The Multithreaded Programming Guide
- * Scott J.Norton and Mark D.DiPasquale
- * 1997, Prentice Hall (www.prenhall.com)
- * ISBN: 0-13-190067-6
- * adapted by Bogdan Costinescu, march 1999
- */
 #include <pthread.h>
 #include <stdio.h>
 #include <errno.h>
 #include <malloc.h>
 
-#include "queue.h"
+#include "2-queue.h"
 
-/* global queue */
+
 extern struct queue_struct thr_queue;
 
 void check_error(int code, char *generator);
 
-int queue_terminate_workers(struct queue_struct *queue)
-{
+int queue_terminate_workers(struct queue_struct *queue){
   if ((queue == NULL) || (queue->valid != QUEUE_VALID))
     return EINVAL;
   
@@ -49,8 +41,7 @@ void queue_wait_workers(struct queue_struct *queue, int nthreads)
 int optimal_number_of_threads(void);
 int optimal_queue_length(void);
 
-void
-process_tasks()
+void process_tasks()
 {
 #define MAX_THREADS 64
   int i, ret, nthreads, max_queue_len;
@@ -58,10 +49,6 @@ process_tasks()
   pthread_attr_t attr;
   void worker(), boss();
 
-  /* initialization code */
-  /* ... */
-
-  /* determine the number of threads to create and max queue length */
   nthreads = optimal_number_of_threads();
   max_queue_len = optimal_queue_length();
 
@@ -105,8 +92,7 @@ process_tasks()
 
 int get_work(struct q_work_struct* w);
 
-void
-boss()
+void boss()
 {
   struct q_work_struct *ptr;
   int ret;
@@ -133,15 +119,10 @@ boss()
   }
 }
 
-void
-worker()
+void worker()
 {
   struct q_work_struct *ptr;
-  
-  /* go into an infinite loop processing work received from
-   * the work queue. If we are supposed to terminate, we
-   * will never return from one of the calls to dequeue();
-   */
+
   for ( ; ; ) {
     /* obtain the next work request */
     ptr = dequeue(&thr_queue);
