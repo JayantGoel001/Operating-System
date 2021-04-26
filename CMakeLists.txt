@@ -3,4 +3,4 @@ project(Operating_System C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(. "Week 3/Threads/6.c" "Week 3/Threads/5.c")
+add_executable(. "Final Project/FCFS Algorithm.cpp")
