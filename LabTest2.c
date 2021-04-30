@@ -1,8 +1,9 @@
 #include<stdio.h>
 #include <unistd.h>
 #include <pthread.h>
-
 char ar[10][100];
+
+
 char str[100];
 pthread_mutex_t lock;
 int m;
