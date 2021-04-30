@@ -17,6 +17,7 @@ void *updateString(void *arg){
     for (int i = 0; i < strlen(ar[index]); ++i) {
         ar[index][i] = toUpper(ar[index][i]);
     }
+    printf("Thread %d executing %s\n",index,ar[index]);
     pthread_mutex_unlock(&lock);
     return NULL;
 }
@@ -45,19 +46,12 @@ int main(){
         token = strtok(NULL, " ");
     }
 
-    for (i = 0; i < min(m,n); ++i) {
+    for (i = 0; i < n; ++i) {
         if (pthread_mutex_init(&lock, NULL) != 0) {
             printf("\n mutex init has failed\n");
             return 1;
         }
-        pthread_create(&threads[i],NULL,updateString,(void *)(i));
-    }
-    for (int j = m; j <n ; ++j) {
-        if (pthread_mutex_init(&lock, NULL) != 0) {
-            printf("\n mutex init has failed\n");
-            return 1;
-        }
-        pthread_create(&threads[j%m],NULL,updateString,(void *)(j));
+        pthread_create(&threads[i%m],NULL,updateString,(void *)(i));
     }
 
     for (int j = 0; j < m; ++j) {
