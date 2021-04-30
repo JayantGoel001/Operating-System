@@ -1,9 +1,9 @@
 #include<stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
 #include <pthread.h>
 
 char ar[10][100];
+char str[100];
 pthread_mutex_t lock;
 char toUpper(char x){
     if (x>=97 && x<=122){
@@ -31,7 +31,7 @@ int min(int a,int b){
 int main(){
     pthread_t threads[100];
     printf("Enter A string\n");
-    char str[100];
+
     gets(str);
     printf("Enter n and m:\n");
     int n,m;
