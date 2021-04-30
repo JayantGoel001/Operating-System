@@ -2,15 +2,20 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <pthread.h>
-#include <ctype.h>
 
 char ar[10][100];
 pthread_mutex_t lock;
+char toUpper(char x){
+    if (x>=97 && x<=122){
+        x-=32;
+    }
+    return x;
+}
 void *updateString(void *arg){
     pthread_mutex_lock(&lock);
     int index = (int )arg;
     for (int i = 0; i < strlen(ar[index]); ++i) {
-        ar[index][i] = toupper(ar[index][i]);
+        ar[index][i] = toUpper(ar[index][i]);
     }
     pthread_mutex_unlock(&lock);
     return NULL;
