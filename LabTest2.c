@@ -5,6 +5,7 @@
 char ar[10][100];
 char str[100];
 pthread_mutex_t lock;
+int m;
 char toUpper(char x){
     if (x>=97 && x<=122){
         x-=32;
@@ -17,25 +18,17 @@ void *updateString(void *arg){
     for (int i = 0; i < strlen(ar[index]); ++i) {
         ar[index][i] = toUpper(ar[index][i]);
     }
-    printf("Thread %d executing %s\n",index,ar[index]);
     pthread_mutex_unlock(&lock);
     return NULL;
 }
 
-int min(int a,int b){
-    if (a>b){
-        return b;
-    } else{
-        return a;
-    }
-}
 int main(){
     pthread_t threads[100];
     printf("Enter A string\n");
 
     gets(str);
     printf("Enter n and m:\n");
-    int n,m;
+    int n;
     scanf("%d",&n);
     scanf("%d",&m);
 
